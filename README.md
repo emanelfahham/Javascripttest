@@ -1,5 +1,5 @@
 # Javascripttest
-Simple app built using Nodejs 
+<li>Simple app built using Nodejs </li>
 Using MongoDb as a database
 and Pug for writing   HTML syntax
 styled using Bower and Bootstrap
