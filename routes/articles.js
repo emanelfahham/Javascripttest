@@ -9,7 +9,7 @@ let User = require('../models/user');
 
 
 // Add article route
-router.get('/add', function(req, res){
+router.get('/add', ensureAuthenticated , function(req, res){
     res.render('add_article',{
         title: 'Add Article'
     });
