@@ -30,22 +30,6 @@ router.post("/add", function (req, res) {
         }
     });
 });
-// Post Route
-// router.post("/add", ensureAuthenticated, function (req, res) {
-//     let article = new Article();
-//     article.title = req.body.title;
-//     article.author = req.body.author;
-//     article.body = req.body.body;
-//     article.save(function (err) {
-//         if (err) {
-//             console.log(err);
-//             return;
-//         } else {
-//             res.redirect('/')
-//         }
-//     });
-// });
-
 // Get single article
 router.get("/:id", function (req, res) {
     Article.findById(req.params.id, function (err, article) {
