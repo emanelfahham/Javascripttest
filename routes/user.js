@@ -3,7 +3,6 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 const passport = require('passport');
 
-
 // Bring in User Model
 let User = require('../models/user');
 // Register Form
@@ -13,15 +12,11 @@ router.get('/register', function (req, res) {
 
 // signup functionality Proccess
 router.post('/register', function (req, res, next) {
-var name = req.body.name;
-var email = req.body.email;
-var username = req.body.username;
-var password = req.body.password;
-    let newUser = new User({
-        name: name,
-        email: email,
-        username: username,
-        password: password
+       let newUser = new User({
+        name: req.body.name,
+        email: req.body.email,
+        username: req.body.username,
+        password: req.body.password
     });
     newUser.save(function (err) {
         if (err) {
@@ -33,6 +28,7 @@ var password = req.body.password;
         });
     });
 });
+
 
     
 
