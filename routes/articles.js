@@ -61,7 +61,7 @@ router.get("/:id", function (req, res) {
 });
 
 // Edit Single article
-router.get("/edit/:id", function (req, res) {
+router.get("/edit/:id", ensureAuthenticated, function (req, res) {
     Article.findById(req.params.id, function (err, article) {
           res.render('edit_article', {
               article: article,
@@ -70,19 +70,7 @@ router.get("/edit/:id", function (req, res) {
         
     });
 });
-// // Edit Single article
-// router.get("/edit/:id", ensureAuthenticated, function (req, res) {
-//     Article.findById(req.params.id, function (err, article) {
-//     User.findById(article.author, function (err, user) {
-    
-//         res.render('edit_article', {
-//             article: article,
-//             author: user.name
-        
-//         });
 
-//     });
-// });
 
 // Update Article
 router.post("/edit/:id", function (req, res) {
@@ -102,28 +90,11 @@ router.post("/edit/:id", function (req, res) {
 });
 // Delete route
 
-router.get('/delete/:id', function (req, res) {
+router.get('/delete/:id', ensureAuthenticated, function (req, res) {
     Article.findByIdAndRemove(req.params.id, function (err, book) {
         res.redirect('/');
     });
 });
-// Delete route
-
-// router.get('/delete/:id', ensureAuthenticated, function (req, res) {
-//     if(!req.user._id){
-//          res.status(500).send();
-//     }
-//     let query = {_id:req.params.id}
-//       Article.findById(req.params.id, function(err, article){
-//     if(article.authore != req.user._id){
-//       Article.remove(query, function(err){
-//     if(err){
-//         console.log(err);
-//     }
-//     res.send('success');
-// })
-// }
-//     })
 
 
 function ensureAuthenticated(req, res, next){
