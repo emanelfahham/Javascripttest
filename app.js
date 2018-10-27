@@ -45,12 +45,13 @@ app.use(session({
 }))
 
 // passport config
-require('./config/passport');
 app.use(passport.initialize());
 app.use(passport.session());
+require('./config/passport')(passport);
 
-app.get('*', function(req, res, next){
-    res.locals.user = req.user || null;
+
+app.use(function (req, res, next) {
+    res.locals.messages = require('express-messages')(req, res);
     next();
 });
 
@@ -85,5 +86,3 @@ app.use('/users', users);
 app.listen(3000, function(){
     console.log("Server Started!");
 });
-
-
