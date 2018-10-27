@@ -19,4 +19,8 @@
 <li>userSchema and articleSchema are stored in two different files in models folder;
 <li>finally I commited the app to github.
 
+<h5> I discovered the problem
+<li> All is fixed access control is utilized in the routes 
+<li> deployed to github
+
 
